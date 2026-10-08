@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# 环境变量（含 API Key，绝不提交）
+.env
+.env.*
+!.env.example
+
+# 运行时产物：trace 日志、评测报告
+backend/var/
+backend/eval/reports/*
+!backend/eval/reports/.gitkeep
+# 合成脚本的临时产物
+backend/eval/datasets/_*
+
+# 前端
+node_modules/
+dist/
+.vite/
+*.local
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 工作区中的历史备份、上游源码副本和临时性能记录；运行所需语料已复制到 backend/corpus/raw/
+/_archive/
+/_corpus_src/
+/_lat.txt
+
+# 本地 embedding 模型（2.4GB，不入版本库）
+backend/.models/

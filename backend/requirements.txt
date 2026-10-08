@@ -1,0 +1,21 @@
+# ---- Web 框架 ----
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+pydantic>=2.9.0
+pydantic-settings>=2.6.0
+httpx>=0.27.0
+
+# ---- 数据库 ----
+# [binary] 表示装预编译版本，不用在本地编译 C 扩展。
+# Windows 上编译 PostgreSQL 驱动非常容易失败，这个中括号能省掉 90% 的麻烦。
+psycopg[binary]>=3.2.0
+
+# ---- 中文分词 ----
+# 入库和查询两侧都要用，用来解决 PostgreSQL 默认不切中文的问题
+jieba>=0.42.1
+
+# ---- 向量化 ----
+# fastembed 走 ONNX Runtime，不需要 2GB 的 PyTorch，装完即用。
+# 首次使用某个模型时会自动下载（国内需要配 HF_ENDPOINT 镜像，见 app/embedding.py）。
+# 如果不用本地模型（改成调远程 embedding API），这个依赖可以去掉。
+fastembed>=0.4.0

@@ -1,0 +1,14 @@
+{
+  "raw_dir": "E:\\Vue\\Agent\\backend\\corpus\\raw",
+  "documents": 68,
+  "chunks": 700,
+  "chunk_size": 800,
+  "chunk_overlap": 120,
+  "seed": 42,
+  "counts": {
+    "single_hop": 50,
+    "multi_hop": 30,
+    "unanswerable": 18
+  },
+  "total": 98
+}

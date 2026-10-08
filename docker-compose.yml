@@ -1,0 +1,33 @@
+# Week 1 起才会用到（向量库 + 全文检索）。
+# 本机当前未安装 Docker，Week 0 的后端不依赖数据库，可直接启动。
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: agent-rag-pg
+    environment:
+      POSTGRES_USER: agent
+      POSTGRES_PASSWORD: agent
+      POSTGRES_DB: agent_rag
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./backend/db/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U agent -d agent_rag"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # 可选：数据库图形界面，方便肉眼检查 chunk 与向量
+  adminer:
+    image: adminer:latest
+    container_name: agent-rag-adminer
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  pgdata:

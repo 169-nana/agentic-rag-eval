@@ -1,0 +1,2999 @@
+{
+  "run_id": "59b7be593c91",
+  "started_at": "2026-10-08T06:16:33+00:00",
+  "dataset": "qa_v1.jsonl",
+  "system": "http-rag(agent+c,k=10,w=1.0,rk=60)",
+  "judge": "llm",
+  "k": 5,
+  "summary": {
+    "count": 98,
+    "judged_count": 98,
+    "judge_coverage": 1.0,
+    "accuracy": 0.8571,
+    "answer_accuracy": 0.8375,
+    "refusal_accuracy": 0.9444,
+    "hallucination_rate": 0.0556,
+    "span_recall_at_k": 0.8375,
+    "hit_rate_at_k": 0.9,
+    "mrr": 0.7608,
+    "ndcg_at_k": 0.8064,
+    "retrieval_scored_count": 80,
+    "latency_p50_ms": 3632.8,
+    "latency_p95_ms": 5540.1,
+    "latency_mean_ms": 3815.0,
+    "prompt_tokens_total": 49231,
+    "completion_tokens_total": 6372,
+    "tokens_per_item": 567.4,
+    "errors": 0,
+    "cost_total_usd": null
+  },
+  "by_type": {
+    "single_hop": {
+      "count": 50,
+      "judged_count": 50,
+      "judge_coverage": 1.0,
+      "accuracy": 0.9,
+      "answer_accuracy": 0.9,
+      "refusal_accuracy": null,
+      "hallucination_rate": null,
+      "span_recall_at_k": 0.88,
+      "hit_rate_at_k": 0.88,
+      "mrr": 0.7733,
+      "ndcg_at_k": 0.8514,
+      "retrieval_scored_count": 50,
+      "latency_p50_ms": 3214.2,
+      "latency_p95_ms": 4508.2,
+      "latency_mean_ms": 3457.6,
+      "prompt_tokens_total": 25067,
+      "completion_tokens_total": 2355,
+      "tokens_per_item": 548.4,
+      "errors": 0,
+      "cost_total_usd": null
+    },
+    "multi_hop": {
+      "count": 30,
+      "judged_count": 30,
+      "judge_coverage": 1.0,
+      "accuracy": 0.7333,
+      "answer_accuracy": 0.7333,
+      "refusal_accuracy": null,
+      "hallucination_rate": null,
+      "span_recall_at_k": 0.7667,
+      "hit_rate_at_k": 0.9333,
+      "mrr": 0.74,
+      "ndcg_at_k": 0.7315,
+      "retrieval_scored_count": 30,
+      "latency_p50_ms": 4136.1,
+      "latency_p95_ms": 5928.6,
+      "latency_mean_ms": 4480.1,
+      "prompt_tokens_total": 16021,
+      "completion_tokens_total": 2718,
+      "tokens_per_item": 624.6,
+      "errors": 0,
+      "cost_total_usd": null
+    },
+    "unanswerable": {
+      "count": 18,
+      "judged_count": 18,
+      "judge_coverage": 1.0,
+      "accuracy": 0.9444,
+      "answer_accuracy": null,
+      "refusal_accuracy": 0.9444,
+      "hallucination_rate": 0.0556,
+      "span_recall_at_k": null,
+      "hit_rate_at_k": null,
+      "mrr": null,
+      "ndcg_at_k": null,
+      "retrieval_scored_count": 0,
+      "latency_p50_ms": 3522.4,
+      "latency_p95_ms": 4833.6,
+      "latency_mean_ms": 3699.2,
+      "prompt_tokens_total": 8143,
+      "completion_tokens_total": 1299,
+      "tokens_per_item": 524.6,
+      "errors": 0,
+      "cost_total_usd": null
+    }
+  },
+  "calibration": {
+    "labeled": 31,
+    "agreement": 0.6452,
+    "cohen_kappa": 0.2821,
+    "disagreements": [
+      {
+        "id": "sh-037",
+        "judge": true,
+        "human": false
+      },
+      {
+        "id": "mh-004",
+        "judge": true,
+        "human": false
+      },
+      {
+        "id": "mh-007",
+        "judge": true,
+        "human": false
+      },
+      {
+        "id": "mh-009",
+        "judge": true,
+        "human": false
+      },
+      {
+        "id": "mh-011",
+        "judge": true,
+        "human": false
+      },
+      {
+        "id": "mh-012",
+        "judge": false,
+        "human": true
+      },
+      {
+        "id": "mh-020",
+        "judge": false,
+        "human": true
+      },
+      {
+        "id": "mh-025",
+        "judge": false,
+        "human": true
+      },
+      {
+        "id": "mh-027",
+        "judge": true,
+        "human": false
+      },
+      {
+        "id": "mh-028",
+        "judge": true,
+        "human": false
+      }
+    ]
+  },
+  "results": [
+    {
+      "id": "sh-001",
+      "question": "在给出的代码中，ref 函数返回的 refObject 的 value 属性被访问时会调用哪个函数？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "track",
+      "prediction": "根据现有资料无法回答。\n\n资料 [1] 只给出了 `value = newValuetrigger(refObject, 'value')` 这一行代码，资料 [2] 只提到“可以通过 getter 和 setter 方法来拦截对象属性”，但两段资料都没有说明 `refObject` 的 `value` 属性被访问时具体调用哪个函数。",
+      "prediction_refused": true,
+      "verdict": {
+        "judged": true,
+        "correct": false,
+        "refused": true,
+        "reason": "系统回答只说无法回答，未给出标准答案track，按规则3判错。",
+        "judge": "llm",
+        "score": 0.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 0.0,
+        "hit": false,
+        "first_hit_rank": null,
+        "ndcg": 0.0
+      },
+      "latency_ms": 4282.2,
+      "prompt_tokens": 376,
+      "completion_tokens": 80,
+      "trace_id": "3abb3082b8494233",
+      "error": null
+    },
+    {
+      "id": "sh-002",
+      "question": "Vue 的单文件组件的英文缩写是什么？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "SFC",
+      "prediction": "Vue 的单文件组件的英文缩写是 **SFC**（Single-File Component）[1][2][3]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确给出缩写SFC，与标准答案一致，无矛盾信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 2,
+        "ndcg": 0.6309
+      },
+      "latency_ms": 3829.5,
+      "prompt_tokens": 453,
+      "completion_tokens": 27,
+      "trace_id": "db728544b9f1421e",
+      "error": null
+    },
+    {
+      "id": "sh-003",
+      "question": "在父组件的博客文章数组中，id 为 2 的文章标题是什么？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "Blogging with Vue",
+      "prediction": "根据资料，id 为 2 的文章标题是 `Blogging with Vue` [1][2]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确给出标准答案标题，无矛盾信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 3833.2,
+      "prompt_tokens": 414,
+      "completion_tokens": 23,
+      "trace_id": "99b454cb24c24c06",
+      "error": null
+    },
+    {
+      "id": "sh-004",
+      "question": "在 Vue 3.5 和 @vue/language-tools 2.1 中，由 useTemplateRef() 创建的 ref 类型可以基于什么自动推断为静态类型？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "匹配的 ref attribute 所在的元素",
+      "prediction": "在 Vue 3.5 和 @vue/language-tools 2.1 中，由 `useTemplateRef()` 创建的 ref 类型可以基于匹配的 ref attribute 所在的元素自动推断为静态类型 [1][2][3]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确指出基于匹配的 ref attribute 所在元素推断，与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.6309
+      },
+      "latency_ms": 4584.8,
+      "prompt_tokens": 613,
+      "completion_tokens": 53,
+      "trace_id": "6e78cac65f2c4481",
+      "error": null
+    },
+    {
+      "id": "sh-005",
+      "question": "reactive() API 不能持有哪类值类型？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "原始类型",
+      "prediction": "`reactive()` 不能持有原始类型，例如 `string`、`number` 或 `boolean` [3]。\n\n依据：`reactive()` 只适用于对象（包括数组和内置类型，如 `Map` 和 `Set`）[2]；它不能持有如 `string`、`number` 或 `boolean` 这样的原始类型 [3]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确指出不能持有原始类型，并举例string、number、boolean，与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 3,
+        "ndcg": 0.5
+      },
+      "latency_ms": 2854.7,
+      "prompt_tokens": 491,
+      "completion_tokens": 80,
+      "trace_id": "1b217b1d2ae84065",
+      "error": null
+    },
+    {
+      "id": "sh-006",
+      "question": "Vue 3 的数据响应式是基于什么实现的？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "JavaScript Proxy",
+      "prediction": "Vue 3 的数据响应式是基于 JavaScript Proxy（代理）实现的 [1]。由 `reactive()` 创建的对象都是 JavaScript Proxy [2]。Vue 3 使用 Proxy 来创建响应式对象，仅将 getter / setter 用于 ref [3]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确包含核心事实JavaScript Proxy，无矛盾信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 2692.5,
+      "prompt_tokens": 453,
+      "completion_tokens": 59,
+      "trace_id": "a2c7962b4d834c07",
+      "error": null
+    },
+    {
+      "id": "sh-007",
+      "question": "在 h 函数中，以 on 开头并跟着大写字母的 props 会被当作什么？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "事件监听器",
+      "prediction": "会被当作事件监听器 [1]。\n\n依据：资料片段 [1] 明确说明，以 `on` 开头并跟着大写字母的 props 会被当作事件监听器，例如 `onClick` 与模板中的 `@click` 等价 [1]；资料片段 [2] 也给出示例，事件监听器应以 `onXxx` 的形式书写，如 `h('div', { onClick: () => {} })` [2]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确给出核心事实“事件监听器”，与标准答案一致，无矛盾信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 3083.6,
+      "prompt_tokens": 404,
+      "completion_tokens": 97,
+      "trace_id": "6c4c14fb001442c2",
+      "error": null
+    },
+    {
+      "id": "sh-008",
+      "question": "在 Vue 中，`<Teleport>` 接收哪个 prop 来指定传送的目标？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "to",
+      "prediction": "`<Teleport>` 接收 `to` prop 来指定传送的目标 [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确指出 to prop 指定传送目标，与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 2825.1,
+      "prompt_tokens": 376,
+      "completion_tokens": 19,
+      "trace_id": "5d3bb1d9507f40d3",
+      "error": null
+    },
+    {
+      "id": "sh-009",
+      "question": "在插件示例中，$translate 函数接收 'greetings.hello' 字符串后，在运行时会被替换为什么值？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "Bonjour!",
+      "prediction": "`$translate('greetings.hello')` 在运行时会被替换为 `Bonjour!` [2]。\n\n依据：`$translate` 函数会接收如 `greetings.hello` 的字符串，在翻译字典中查找并返回翻译值 [1]；资料中给出的该表达式运行结果即为 `Bonjour!` [2]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确给出Bonjour!，与标准答案核心事实一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 2,
+        "ndcg": 0.6309
+      },
+      "latency_ms": 2597.3,
+      "prompt_tokens": 417,
+      "completion_tokens": 74,
+      "trace_id": "eb9167699764404b",
+      "error": null
+    },
+    {
+      "id": "sh-010",
+      "question": "当子组件的根元素已有 class 或 style attribute 时，它会和从父组件继承的值发生什么？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "合并",
+      "prediction": "子组件的根元素已有的 `class` 或 `style` attribute 会与从父组件继承的值**合并** [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "系统回答明确指出会合并，与标准答案核心事实一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 3398.4,
+      "prompt_tokens": 461,
+      "completion_tokens": 29,
+      "trace_id": "cfc939d6387d42ae",
+      "error": null
+    },
+    {
+      "id": "sh-011",
+      "question": "在 watchEffect() 的示例中，用于加载远程资源的 API 请求 URL 是什么？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "https://jsonplaceholder.typicode.com/todos/${todoId.value}",
+      "prediction": "根据资料，用于加载远程资源的 API 请求 URL 是 `https://jsonplaceholder.typicode.com/todos/${todoId.value}` [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确包含标准答案的完整URL，无矛盾信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 3865.1,
+      "prompt_tokens": 381,
+      "completion_tokens": 32,
+      "trace_id": "19d86af173eb4816",
+      "error": null
+    },
+    {
+      "id": "sh-012",
+      "question": "使用插槽时，`<FancyButton>` 仅负责渲染外层的什么元素？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "<button>",
+      "prediction": "`<FancyButton>` 仅负责渲染外层的 `<button>` 元素 [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确指出外层元素为<button>，与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 3176.5,
+      "prompt_tokens": 373,
+      "completion_tokens": 20,
+      "trace_id": "051f6684cb79401c",
+      "error": null
+    },
+    {
+      "id": "sh-013",
+      "question": "在 `<SubmitButton>` 组件中，当父组件没有提供任何插槽内容时，`<slot>` 标签之间写什么内容会被作为默认内容渲染？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "Submit",
+      "prediction": "在 `<slot>` 标签之间写的内容会被作为默认内容渲染，例如写入“Submit”就会渲染“Submit”[1][2]。`<slot>` 插口中的内容被当作“默认”内容，会在父组件没有传递任何插槽内容时显示[3][5]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确包含默认内容为“Submit”，与标准答案一致，无矛盾信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 3239.4,
+      "prompt_tokens": 527,
+      "completion_tokens": 60,
+      "trace_id": "e3f7499bfb964a2c",
+      "error": null
+    },
+    {
+      "id": "sh-014",
+      "question": "在表单元素中引入哪个属性可以使其应用于表单中的所有 input 框？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "autocomplete='on'",
+      "prediction": "在表单元素中引入 `autocomplete='on'` 可以使其应用于表单中的所有 input 框 [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确给出autocomplete='on'，与标准答案核心事实一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 2769.4,
+      "prompt_tokens": 383,
+      "completion_tokens": 24,
+      "trace_id": "7fb13538cfb34d65",
+      "error": null
+    },
+    {
+      "id": "sh-015",
+      "question": "在 `<script setup>` 中，`defineProps()` 宏函数支持从它的什么中推导类型？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "参数",
+      "prediction": "在 `<script setup>` 中，`defineProps()` 宏函数支持从它的参数中推导类型 [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确指出从参数中推导类型，与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 2950.5,
+      "prompt_tokens": 458,
+      "completion_tokens": 25,
+      "trace_id": "d41e634b445b447f",
+      "error": null
+    },
+    {
+      "id": "sh-016",
+      "question": "在 Vue 中，一个子组件只会在什么条件下才会更新？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "其至少一个 props 改变时",
+      "prediction": "一个子组件只会在其至少一个 props 改变时才会更新 [1][2]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确包含核心事实：至少一个props改变时更新，无矛盾信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.6309
+      },
+      "latency_ms": 4095.1,
+      "prompt_tokens": 507,
+      "completion_tokens": 19,
+      "trace_id": "b1d5678e0fd8489d",
+      "error": null
+    },
+    {
+      "id": "sh-017",
+      "question": "浏览核心功能和常见用户界面的示例的标题是什么？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "查看示例",
+      "prediction": "根据资料，浏览核心功能和常见用户界面的示例的标题是 `next-steps-caption` [1][3]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": false,
+        "refused": false,
+        "reason": "系统回答给出的是next-steps-caption，与标准答案“查看示例”不符",
+        "judge": "llm",
+        "score": 0.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 0.0,
+        "hit": false,
+        "first_hit_rank": null,
+        "ndcg": 0.0
+      },
+      "latency_ms": 2837.8,
+      "prompt_tokens": 389,
+      "completion_tokens": 26,
+      "trace_id": "d1e1de16cc514ee5",
+      "error": null
+    },
+    {
+      "id": "sh-018",
+      "question": "在关于标题的无障碍访问实践中，推荐按什么顺序嵌套标题？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "按级别顺序嵌套标题",
+      "prediction": "推荐按级别顺序嵌套标题，即 `<h1>` 到 `<h6>` [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答包含核心事实“按级别顺序嵌套标题”，无矛盾信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 3512.5,
+      "prompt_tokens": 432,
+      "completion_tokens": 21,
+      "trace_id": "69bf21cacec6491f",
+      "error": null
+    },
+    {
+      "id": "sh-019",
+      "question": "当一个组件同时接收默认插槽和具名插槽时，所有位于顶级的非 <template> 节点都被隐式地视为什么？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "默认插槽的内容",
+      "prediction": "所有位于顶级的非 `<template>` 节点都被隐式地视为默认插槽的内容 [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确指出顶级非template节点隐式视为默认插槽内容，与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 3362.0,
+      "prompt_tokens": 407,
+      "completion_tokens": 22,
+      "trace_id": "25d17473e3b44902",
+      "error": null
+    },
+    {
+      "id": "sh-020",
+      "question": "在示例中，父组件的 myRef 是 undefined，而子组件的 model 是多少？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "1",
+      "prediction": "根据资料，子组件的 `model` 是 1 [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确给出子组件model为1，与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 2620.0,
+      "prompt_tokens": 428,
+      "completion_tokens": 16,
+      "trace_id": "4aa83ab356d1476f",
+      "error": null
+    },
+    {
+      "id": "sh-021",
+      "question": "Vue 通过什么方式来校验 author prop 的值是否是 Person 类的一个实例？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "instanceof Person",
+      "prediction": "Vue 通过 `instanceof Person` 来校验 `author` prop 的值是否是 `Person` 类的一个实例 [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确给出 instanceof Person，与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 3220.6,
+      "prompt_tokens": 417,
+      "completion_tokens": 29,
+      "trace_id": "9d1ff3454e084e99",
+      "error": null
+    },
+    {
+      "id": "sh-022",
+      "question": "Vue 提供的哪个指令是上述双向绑定操作的语法糖？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "v-model",
+      "prediction": "`v-model` 指令是上述双向绑定操作的语法糖 [1][2]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确给出v-model，与标准答案核心事实一致，无矛盾信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 2492.5,
+      "prompt_tokens": 374,
+      "completion_tokens": 18,
+      "trace_id": "396f92294ff144ff",
+      "error": null
+    },
+    {
+      "id": "sh-023",
+      "question": "计算属性的 getter 应该只做什么？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "只做计算而没有任何其他的副作用",
+      "prediction": "计算属性的 getter 应该只做计算和返回该值，不应有任何其他副作用 [1]。\n\n具体来说，getter 的职责仅为计算和返回该值 [1]。资料中明确提醒：不要改变其他状态、在 getter 中做异步请求或者更改 DOM [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确指出getter只做计算和返回，无副作用，与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 2982.3,
+      "prompt_tokens": 427,
+      "completion_tokens": 62,
+      "trace_id": "132bbce5e7eb427a",
+      "error": null
+    },
+    {
+      "id": "sh-024",
+      "question": "在哪个网站的演练场中可以查看组件基础示例？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "play.vuejs.org",
+      "prediction": "根据现有资料无法回答。\n\n资料中只提供了若干指向 `play.vuejs.org` 的演练场链接 [1][2][3][4][5][6]，以及提到可以在浏览器中访问 Vue 单文件组件演练场 [7]，但没有任何一处说明\"组件基础示例\"可以在哪个网站的演练场中查看。",
+      "prediction_refused": true,
+      "verdict": {
+        "judged": true,
+        "correct": false,
+        "refused": true,
+        "reason": "回答只说无法回答，未给出标准答案play.vuejs.org",
+        "judge": "llm",
+        "score": 0.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 0.0,
+        "hit": false,
+        "first_hit_rank": null,
+        "ndcg": 0.0
+      },
+      "latency_ms": 5816.0,
+      "prompt_tokens": 915,
+      "completion_tokens": 70,
+      "trace_id": "9ea118d410a24c93",
+      "error": null
+    },
+    {
+      "id": "sh-025",
+      "question": "推荐的 IDE 配置是什么？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "Visual Studio Code + Vue - Official 扩展",
+      "prediction": "推荐的 IDE 配置是 Visual Studio Code (VS Code) + Vue - Official 扩展（之前是 Volar）[1][2][3]。\n\n依据：\n- 推荐使用的 IDE 是 VS Code，配合 Vue - Official 扩展（之前是 Volar），该插件提供语法高亮、TypeScript 支持，以及模板内表达式与组件 props 的智能提示 [1]。\n- 推荐的 IDE 配置是 Visual Studio Code + Vue - Official 扩展 [2]。\n- 强烈推荐 Visual Studio Code (VS Code)，因为它对 TypeScript 有着很好的内置支持 [3]。\n\n此外，资料还提到其他可选方案：WebStorm 同样为 Vue 的单文件组件提供了很好的内置支持 [6]，并对 TypeScript 和 Vue 提供开箱即用的支持 [7]；其他支持 LSP 的 IDE 也可以通过 LSP 享受 Volar 的核心功能，如 Sublime Text 通过 LSP-Volar、vim / Neovim 通过 coc-volar 支持 [6]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "核心事实一致：VS Code + Vue - Official 扩展，额外信息不矛盾。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 2,
+        "ndcg": 0.6309
+      },
+      "latency_ms": 4414.5,
+      "prompt_tokens": 815,
+      "completion_tokens": 213,
+      "trace_id": "e6fa74e163644a8a",
+      "error": null
+    },
+    {
+      "id": "sh-026",
+      "question": "在 Vue 中，哪个 v-model 修饰符会在输入框有 type=\"number\" 时自动启用？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": ".number",
+      "prediction": "`number` 修饰符会在输入框有 `type=\"number\"` 时自动启用 [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确给出 number 修饰符，与标准答案 .number 一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 3164.3,
+      "prompt_tokens": 456,
+      "completion_tokens": 23,
+      "trace_id": "5adf13e0bc8f4204",
+      "error": null
+    },
+    {
+      "id": "sh-027",
+      "question": "在匿名函数式组件的代码中，FComponent.emits 里 sendMessage 的验证函数返回什么？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "typeof value === 'string'",
+      "prediction": "根据资料，`FComponent.emits` 里 `sendMessage` 的验证函数返回 `typeof value === 'string'` [1][2]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确给出验证函数返回 typeof value === 'string'，与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.6309
+      },
+      "latency_ms": 3278.3,
+      "prompt_tokens": 390,
+      "completion_tokens": 33,
+      "trace_id": "35c058d66b3544e8",
+      "error": null
+    },
+    {
+      "id": "sh-028",
+      "question": "Vue 使用哪个浏览器原生 API 完成 HTML 内容的转义？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "textContent",
+      "prediction": "根据现有资料无法回答「Vue 使用哪个浏览器原生 API 完成 HTML 内容的转义」这个问题。\n\n资料中只提到两种浏览器原生 API 用于转义：\n- `setAttribute` [1]\n- `textContent` [2]\n\n但这两段资料都没有说明它们与 Vue 的对应关系，也没有指出 Vue 具体使用其中哪一个（或哪些）来完成 HTML 内容的转义。因此缺少的正是「Vue 与这些 API 的对应关系」这一信息。",
+      "prediction_refused": true,
+      "verdict": {
+        "judged": true,
+        "correct": false,
+        "refused": true,
+        "reason": "系统回答只说无法回答，未给出标准答案textContent，按规则3判错。",
+        "judge": "llm",
+        "score": 0.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 2,
+        "ndcg": 0.6309
+      },
+      "latency_ms": 2914.7,
+      "prompt_tokens": 398,
+      "completion_tokens": 105,
+      "trace_id": "4fe658bd4f7244a7",
+      "error": null
+    },
+    {
+      "id": "sh-029",
+      "question": "Vue 团队曾通过哪个实验性功能探索改变 JavaScript 语义的方向？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "响应性语法糖",
+      "prediction": "Vue 团队曾通过一个名为**响应性语法糖**的实验性功能来探索这个方向 [1][3]。该功能曾经是实验性功能，并已在最新的 3.4 版本中被移除 [3]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确包含核心事实“响应性语法糖”，无矛盾错误信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 2982.2,
+      "prompt_tokens": 482,
+      "completion_tokens": 48,
+      "trace_id": "11337d7f4f12457d",
+      "error": null
+    },
+    {
+      "id": "sh-030",
+      "question": "当 v-if 和 v-for 同时存在于一个节点上时，哪个指令的优先级更高？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "v-if",
+      "prediction": "`v-if` 的优先级更高。[1][2]\n\n依据：资料指出，当两者同时存在于一个节点上时，`v-if` 比 `v-for` 的优先级更高 [1]；当 `v-if` 和 `v-for` 同时存在于一个元素上时，`v-if` 会首先被执行 [2]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确指出v-if优先级更高，与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 3161.3,
+      "prompt_tokens": 407,
+      "completion_tokens": 75,
+      "trace_id": "91d9c41098b74cc5",
+      "error": null
+    },
+    {
+      "id": "sh-031",
+      "question": "对于大于 Number.MAX_SAFE_INTEGER 的输入值，由于 JavaScript 数字精度的限制，结果可能怎么样？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "可能不准确",
+      "prediction": "对于大于 Number.MAX_SAFE_INTEGER 的输入值，由于 JavaScript 数字精度的限制，结果可能不准确 [1][3][4]。\n\n依据：资料中明确写道\"对于大于 Number.MAX_SAFE_INTEGER (9007199254740991) 的输入值，由于 JavaScript 数字精度的限制，结果可能不准确\" [1][3]，并指出\"由于 JavaScript 数字精度的限制，结果可能不准确\" [4]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "系统回答包含核心事实“结果可能不准确”，与标准答案一致，无矛盾信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 4064.8,
+      "prompt_tokens": 479,
+      "completion_tokens": 99,
+      "trace_id": "ccb1e385eb9e4da2",
+      "error": null
+    },
+    {
+      "id": "sh-032",
+      "question": "在 3.5 版本以前，使用模板引用需要声明一个与模板引用 attribute 同名的 ref，该 ref 的值需要是什么？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "数组",
+      "prediction": "在 3.5 版本以前，需要声明一个与模板引用 attribute 同名的 ref，该 ref 的值需要是一个数组 [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确指出ref的值需要是一个数组，与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 2860.4,
+      "prompt_tokens": 389,
+      "completion_tokens": 31,
+      "trace_id": "09ecfec0470e4c2e",
+      "error": null
+    },
+    {
+      "id": "sh-033",
+      "question": "Vue 提供的哪个接口可以用来在提供者和消费者之间同步注入值的类型？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "InjectionKey",
+      "prediction": "`InjectionKey` 接口可以用来在提供者和消费者之间同步注入值的类型 [1]。它是一个继承自 `Symbol` 的泛型类型 [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确给出InjectionKey接口，无矛盾信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 2381.1,
+      "prompt_tokens": 393,
+      "completion_tokens": 34,
+      "trace_id": "a166552581524b17",
+      "error": null
+    },
+    {
+      "id": "sh-034",
+      "question": "在组件间过渡中，`<Transition>` 的 `mode` 属性可以设置为什么值来实现先出后进？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "out-in",
+      "prediction": "`mode` 属性可以设置为 `\"out-in\"` 来实现先出后进（先执行离开动画，完成之后再执行进入动画）[1][2]。\n\n依据：\n- 向 `<Transition>` 传入 `mode` prop 即可实现先执行离开动画、完成之后再执行进入动画的行为，示例为 `<Transition mode=\"out-in\">` [2]。\n- `<Transition>` 也支持 `mode=\"in-out\"`，但该值并不常用 [1]。\n- 该 `mode` 也可用于动态组件之间的切换，例如 `<Transition name=\"fade\" mode=\"out-in\">` [3]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确给出mode=\"out-in\"实现先出后进，事实正确无矛盾。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 3,
+        "ndcg": 0.5
+      },
+      "latency_ms": 3895.8,
+      "prompt_tokens": 531,
+      "completion_tokens": 134,
+      "trace_id": "6e8b1a0b156e4c54",
+      "error": null
+    },
+    {
+      "id": "sh-035",
+      "question": "在知识库文本中，哪个组件被举例说明包含多个插槽出口？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "BaseLayout",
+      "prediction": "`<BaseLayout>` 组件被举例说明包含多个插槽出口 [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确给出BaseLayout，与标准答案核心事实一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 3597.4,
+      "prompt_tokens": 470,
+      "completion_tokens": 18,
+      "trace_id": "ae04637880db4fd7",
+      "error": null
+    },
+    {
+      "id": "sh-036",
+      "question": "从哪个版本开始，WebStorm 和 Vue 插件内置了对 Vue 语言服务器的支持？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "2023.2 版",
+      "prediction": "从 2023.2 版开始，WebStorm 和 Vue 插件内置了对 Vue 语言服务器的支持 [1][2]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确给出2023.2版，与标准答案核心事实一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.6309
+      },
+      "latency_ms": 2863.4,
+      "prompt_tokens": 392,
+      "completion_tokens": 29,
+      "trace_id": "97111f3e3e664721",
+      "error": null
+    },
+    {
+      "id": "sh-037",
+      "question": "当自定义指令应用到一个多根组件时，会发生什么？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "指令将会被忽略且抛出一个警告",
+      "prediction": "自定义指令会被忽略，并抛出一个警告 [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答与标准答案核心事实一致，指令被忽略并抛出警告。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 3217.7,
+      "prompt_tokens": 437,
+      "completion_tokens": 12,
+      "trace_id": "32cdea53b0e74367",
+      "error": null
+    },
+    {
+      "id": "sh-038",
+      "question": "在给出的代码片段中，当 fetch 请求失败时，this.answer 被设置为什么？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "'Error! Could not reach the API. ' + error",
+      "prediction": "根据资料，当请求失败时，`this.answer` 被设置为 `'Error! Could not reach the API. ' + error` [2]。\n\n依据：资料片段 [2] 明确给出了 `this.answer = 'Error! Could not reach the API. ' + error` [2]。资料 [1] 和 [3] 是 `answer.value` 的赋值，形式相同但对象不同 [1][3]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "系统回答准确给出标准答案的核心事实，无矛盾信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 2,
+        "ndcg": 0.6309
+      },
+      "latency_ms": 3082.3,
+      "prompt_tokens": 394,
+      "completion_tokens": 93,
+      "trace_id": "49672a536edb4fcf",
+      "error": null
+    },
+    {
+      "id": "sh-039",
+      "question": "在 server.js 中，为了在浏览器中加载客户端文件，需要添加哪一行代码来托管客户端文件？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "server.use(express.static('.'))",
+      "prediction": "需要添加 `server.use(express.static('.'))` 来托管客户端文件 [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答包含标准答案核心代码，无矛盾信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 3417.0,
+      "prompt_tokens": 381,
+      "completion_tokens": 21,
+      "trace_id": "bbf3c86d4e984f14",
+      "error": null
+    },
+    {
+      "id": "sh-040",
+      "question": "在无障碍访问中，添加哪个属性可以使内容对屏幕阅读器隐藏，但对其他可视用户仍然可见？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "aria-hidden=\"true\"",
+      "prediction": "添加 `aria-hidden=\"true\"` 可以使内容在无障碍访问时被隐藏，但对其他可视用户仍然可见 [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确给出aria-hidden=\"true\"，与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 3210.7,
+      "prompt_tokens": 390,
+      "completion_tokens": 27,
+      "trace_id": "ad373326b2034013",
+      "error": null
+    },
+    {
+      "id": "sh-041",
+      "question": "Vue 与 Laravel 搭配使用时，Laravel 自带了什么官方插件？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "Vite 插件",
+      "prediction": "Laravel 自带了官方的 Vite 插件，可以开箱即用地处理资源打包和模块热替换 [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确包含核心事实“Vite 插件”，与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 2207.9,
+      "prompt_tokens": 395,
+      "completion_tokens": 28,
+      "trace_id": "8526634baae047b4",
+      "error": null
+    },
+    {
+      "id": "sh-042",
+      "question": "在示例中，计算属性 ref 的名称是什么？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "publishedBooksMessage",
+      "prediction": "计算属性 ref 的名称是 `publishedBooksMessage` [1][2]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确给出 publishedBooksMessage，与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 2,
+        "ndcg": 0.6309
+      },
+      "latency_ms": 3319.8,
+      "prompt_tokens": 524,
+      "completion_tokens": 16,
+      "trace_id": "9d2157b44c2d41ac",
+      "error": null
+    },
+    {
+      "id": "sh-043",
+      "question": "在 event.js 中，useEventListener 组合式函数在组件卸载时调用什么来移除事件监听器？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "onUnmounted",
+      "prediction": "在组件卸载时，`useEventListener` 调用 `onUnmounted`，在其中执行 `target.removeEventListener(event, callback)` 来移除事件监听器 [1][2]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确包含核心事实 onUnmounted，且无矛盾信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 2,
+        "ndcg": 0.6309
+      },
+      "latency_ms": 3701.2,
+      "prompt_tokens": 426,
+      "completion_tokens": 39,
+      "trace_id": "80aea54268614a61",
+      "error": null
+    },
+    {
+      "id": "sh-044",
+      "question": "在演练场中尝试一下的链接指向哪个网站？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "play.vuejs.org",
+      "prediction": "根据现有资料，这些“在演练场中尝试一下”的链接指向 **play.vuejs.org** [1][3][4][5][6][7][8][9][10]。\n\n依据：资料中多个片段显示链接地址以 `https://play.vuejs.org/#...` 开头 [1][3][4][5][6][7][8][9][10]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确给出play.vuejs.org，与标准答案核心事实一致，无矛盾信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 0.0,
+        "hit": false,
+        "first_hit_rank": null,
+        "ndcg": 0.0
+      },
+      "latency_ms": 11436.2,
+      "prompt_tokens": 1823,
+      "completion_tokens": 84,
+      "trace_id": "4cf4fc3858db4e4a",
+      "error": null
+    },
+    {
+      "id": "sh-045",
+      "question": "在 Vue 模板中，当 ref 作为文本插值的最终计算值时，`{{ object.id }}` 会渲染成什么？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "1",
+      "prediction": "`{{ object.id }}` 会渲染为 `1` [1]。\n\n依据：资料片段 [1] 指出，如果 ref 是文本插值的最终计算值（即 `{{ }}` 标签），那么它将被解包，因此 `{{ object.id }}` 将渲染为 `1` [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确给出渲染结果为1，与标准答案一致，无矛盾信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 3916.5,
+      "prompt_tokens": 523,
+      "completion_tokens": 68,
+      "trace_id": "d4e80d213f2045c6",
+      "error": null
+    },
+    {
+      "id": "sh-046",
+      "question": "在 Vue 中，若要将一个对象的所有属性都当作 props 传入，应该使用什么写法？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "没有参数的 v-bind",
+      "prediction": "在 Vue 中，若要将一个对象的所有属性都当作 props 传入，可以使用**没有参数的 `v-bind`**，即只使用 `v-bind` 而非 `:prop-name` [1][2]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确指出使用没有参数的v-bind，与标准答案核心事实一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 0.0,
+        "hit": false,
+        "first_hit_rank": null,
+        "ndcg": 0.0
+      },
+      "latency_ms": 2965.5,
+      "prompt_tokens": 429,
+      "completion_tokens": 48,
+      "trace_id": "98b173308baa44df",
+      "error": null
+    },
+    {
+      "id": "sh-047",
+      "question": "在示例代码中，当加载状态为真时，输入框被设置为什么属性？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "disabled",
+      "prediction": "根据现有资料无法回答。资料中没有出现\"加载状态为真时输入框被设置为什么属性\"的相关信息。",
+      "prediction_refused": true,
+      "verdict": {
+        "judged": true,
+        "correct": false,
+        "refused": true,
+        "reason": "系统回答只说无法回答，未给出标准答案disabled，属于答非所问。",
+        "judge": "llm",
+        "score": 0.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 0.0,
+        "hit": false,
+        "first_hit_rank": null,
+        "ndcg": 0.0
+      },
+      "latency_ms": 3816.5,
+      "prompt_tokens": 1630,
+      "completion_tokens": 25,
+      "trace_id": "41e53e1a4a9247f6",
+      "error": null
+    },
+    {
+      "id": "sh-048",
+      "question": "在 SSR 环境下，应用模块通常只在什么时候初始化一次？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "服务器启动时",
+      "prediction": "在 SSR 环境下，应用模块通常只在服务器启动时初始化一次 [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确包含核心事实“服务器启动时”，与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 2395.9,
+      "prompt_tokens": 369,
+      "completion_tokens": 17,
+      "trace_id": "fbf528cad7304dc2",
+      "error": null
+    },
+    {
+      "id": "sh-049",
+      "question": "副作用订阅被存储在什么数据结构中？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "WeakMap<target, Map<key, Set<effect>>>",
+      "prediction": "副作用订阅被存储在一个全局的 `WeakMap<target, Map<key, Set<effect>>>` 数据结构中 [2]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确给出WeakMap<target, Map<key, Set<effect>>>结构，无矛盾信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 2,
+        "ndcg": 0.6309
+      },
+      "latency_ms": 3245.0,
+      "prompt_tokens": 490,
+      "completion_tokens": 28,
+      "trace_id": "860ce845562f43ca",
+      "error": null
+    },
+    {
+      "id": "sh-050",
+      "question": "Vue 提供的用于创建响应式副作用的 API 是什么？",
+      "type": "single_hop",
+      "answerable": true,
+      "gold_answer": "watchEffect()",
+      "prediction": "Vue 提供的用于创建响应式副作用的 API 是 `watchEffect()` [1][2]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确给出watchEffect()，与标准答案核心事实一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 2448.1,
+      "prompt_tokens": 378,
+      "completion_tokens": 22,
+      "trace_id": "994ce6f6a4d147d3",
+      "error": null
+    },
+    {
+      "id": "mh-001",
+      "question": "Vue 中与 ref 对应的编译时宏命令是什么？在使用 withDefaults 时，默认值的可变引用类型应该如何处理？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "$ref；应在函数中进行包装",
+      "prediction": "**与 ref 对应的编译时宏命令是 `$ref()`** [2]。它是一个编译时的宏命令，不是真实的、在运行时会调用的方法 [2]。\n\n**在使用 `withDefaults` 时，默认值的可变引用类型（如数组或对象）应该在函数中进行包装**，以避免意外修改和外部副作用，这样可以确保每个组件实例都会获得自己默认值的副本 [1]。例如 `labels: () => ['one', 'two']` [3]。当使用解构时，这**不**是必要的 [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确给出$ref宏，并说明可变引用类型应在函数中包装，与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 0.5,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 0.6131
+      },
+      "latency_ms": 4120.3,
+      "prompt_tokens": 470,
+      "completion_tokens": 114,
+      "trace_id": "2bd2e4474eca4911",
+      "error": null
+    },
+    {
+      "id": "mh-002",
+      "question": "Vue 渲染函数中，如果要在页面上渲染多个重复的元素，可以用什么函数来做这件事？这个函数在 Vue 与 Web Components 的集成中，通过哪个配置选项可以让 Vue 跳过对自定义元素的组件解析？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "工厂函数；compilerOptions.isCustomElement",
+      "prediction": "渲染多个重复的元素或组件，可以使用**工厂函数**来做这件事 [2][3]。\n\n让 Vue 跳过对自定义元素的组件解析，是通过 **`compilerOptions.isCustomElement`** 这个选项指定的 [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确包含工厂函数和compilerOptions.isCustomElement两个核心事实，无矛盾。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.3066
+      },
+      "latency_ms": 4055.3,
+      "prompt_tokens": 474,
+      "completion_tokens": 47,
+      "trace_id": "fadf28fb209f4e18",
+      "error": null
+    },
+    {
+      "id": "mh-003",
+      "question": "在解释响应式原理时，ref 函数内部通过 get 和 set 访问器来追踪哪个属性？这个属性在组合式 API 的模板中通常如何被使用？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "value；在模板中直接使用 count 而无需 .value",
+      "prediction": "ref 内部通过 getter 和 setter 拦截的是 `.value` 属性的 get 和 set 操作 [2]。在模板中使用 ref 时，不需要附加 `.value` [3]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答正确指出拦截.value属性，并说明模板中无需附加.value，与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 0.5,
+        "hit": true,
+        "first_hit_rank": 5,
+        "ndcg": 0.2372
+      },
+      "latency_ms": 4134.9,
+      "prompt_tokens": 654,
+      "completion_tokens": 42,
+      "trace_id": "677ac604896e46b4",
+      "error": null
+    },
+    {
+      "id": "mh-004",
+      "question": "在 Vue 的计数器组件示例中，用于驱动视图的响应式状态是通过哪个 API 创建的？该 API 在内部实现中通过什么机制来追踪依赖？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "ref；通过 track() 追踪依赖",
+      "prediction": "在 Vue 的计数器组件示例中，用于驱动视图的响应式状态是通过 `ref` API 创建的，例如 `const count = ref(0)` [1]。\n\n该 API 在内部实现中通过基于依赖追踪的响应式系统来追踪依赖：组件首次渲染时，Vue 会追踪在渲染过程中使用的每一个 ref；当一个 ref 被修改时，它会触发追踪它的组件的一次重新渲染 [3]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答正确指出ref API，并说明通过依赖追踪机制追踪依赖，与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 0.5,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 0.6131
+      },
+      "latency_ms": 5536.2,
+      "prompt_tokens": 504,
+      "completion_tokens": 90,
+      "trace_id": "4c4b1e1461464978",
+      "error": null
+    },
+    {
+      "id": "mh-005",
+      "question": "在 `<script setup>` 中，如果要在 `await` 操作之后仍能调用组合式函数，编译器会自动恢复什么？而使用 `defineExpose` 时，必须在什么操作之前调用才能保证暴露的属性和方法可访问？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "当前活跃的组件实例；任何 await 操作之前",
+      "prediction": "在 `<script setup>` 中，编译器会在异步操作之后自动为你恢复当前的组件实例 [3]。使用 `defineExpose` 时，必须在任何 `await` 操作之前调用，否则在 `await` 操作后暴露的属性和方法将无法访问 [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确指出恢复组件实例，且defineExpose需在await前调用，与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 0.9197
+      },
+      "latency_ms": 4120.0,
+      "prompt_tokens": 469,
+      "completion_tokens": 60,
+      "trace_id": "41e055e883b14a1d",
+      "error": null
+    },
+    {
+      "id": "mh-006",
+      "question": "在单元测试中，用于演示独立函数测试的 increment 函数，其默认的 max 参数值是多少？在 Vue 性能分析中，哪个配置选项可以开启 Vue 特有的性能标记？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "10；app.config.performance",
+      "prediction": "两个问题的答案如下：\n\n1. increment 函数的默认 max 参数值是 10 [2]。\n2. 开启 Vue 特有性能标记的配置选项是 `app.config.performance` [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "两个答案均与标准答案一致，无矛盾信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 4274.3,
+      "prompt_tokens": 430,
+      "completion_tokens": 43,
+      "trace_id": "b3fde4066ac54c16",
+      "error": null
+    },
+    {
+      "id": "mh-007",
+      "question": "在浏览器中通过 import map 引入 Vue 时，示例里从哪个 URL 加载 vue 的 ESM 浏览器构建？该构建所属的 Vue 版本在定义异步组件时支持哪种在媒体查询匹配时进行激活的激活策略？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "hydrateOnMediaQuery",
+      "prediction": "根据现有资料，无法完整回答。\n\n资料中能找到的部分：\n\n- 关于 import map 引入 Vue 的示例，资料提到使用了完整的 CDN URL 来导入，并说明导入的 CDN URL 指向的是 Vue 的 ES 模块构建版本 [6][7]。\n- 资料给出了 ESM 版本的文件名：`vue.esm-browser.prod.js` [3]。\n- 资料提到在 Vue 3.5+ 中，异步组件可以通过提供激活策略来控制何时进行激活，内置策略需要分别导入以便 tree-shake [2][4]。\n- 资料提到了一种激活策略：在媒体查询匹配时进行激活，对应 `hydrateOnMediaQuery` [5]。\n\n资料中没有给出的部分：\n\n- 资料里没有出现 import map 示例中加载 vue 的**具体完整 URL**（只提到\"完整的 CDN URL\"这一说法，未给出实际地址）[6]。\n- 因此无法从资料中确认该示例具体从哪个 URL 加载。",
+      "prediction_refused": true,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": true,
+        "reason": "回答给出了标准答案hydrateOnMediaQuery，核心事实正确。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 0.0,
+        "hit": false,
+        "first_hit_rank": null,
+        "ndcg": 0.0
+      },
+      "latency_ms": 6788.5,
+      "prompt_tokens": 720,
+      "completion_tokens": 215,
+      "trace_id": "4045a5ba06eb4287",
+      "error": null
+    },
+    {
+      "id": "mh-008",
+      "question": "在选项式 API 中，用于声明响应式状态的组件选项，其返回值中的属性在模板中通过什么语法渲染？该语法在 provide 函数中对应的第一个参数被称为什么？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "双花括号语法；注入名",
+      "prediction": "根据现有资料无法完整回答。\n\n已找到的部分：\n- 在选项式 API 中，用于声明响应式状态的组件选项是 `data`，其值应为返回一个对象的函数 [1][4]。\n- 在 `<script setup>` 块中声明的响应式状态可以直接在模板中使用，资料中展示了使用双花括号语法渲染动态文本 [2]。\n\n资料中没有说明：\n- 选项式 API 中 `data` 返回值里的属性在模板中通过什么语法渲染。\n- 该语法在 `provide()` 函数中对应的第一个参数被称为什么（资料仅提到 `provide()` 的第一个参数被称为**注入名**，可以是一个字符串或是一个 `Symbol` [3]，但未将其与模板渲染语法关联）。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": false,
+        "refused": false,
+        "reason": "回答未给出双花括号语法，且称无法完整回答，未满足核心事实。",
+        "judge": "llm",
+        "score": 0.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 0.5,
+        "hit": true,
+        "first_hit_rank": 3,
+        "ndcg": 0.3066
+      },
+      "latency_ms": 4674.0,
+      "prompt_tokens": 532,
+      "completion_tokens": 158,
+      "trace_id": "db8675dd46e843a4",
+      "error": null
+    },
+    {
+      "id": "mh-009",
+      "question": "在 Vue 中，用于生成唯一 ID 以关联表单控件与可见文本的 API 是什么？该 API 在 Chrome 开发者工具的性能面板中开启 Vue 特有性能标记的配置项是什么？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "useId；app.config.performance",
+      "prediction": "用于生成唯一 ID 以关联表单控件与可见文本的 API 是 `useId()` [2]。在 Chrome 开发者工具的性能时间线上开启 Vue 特有性能标记的配置项是 `app.config.performance` [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确给出useId和app.config.performance，与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 4288.5,
+      "prompt_tokens": 474,
+      "completion_tokens": 50,
+      "trace_id": "18661fc857814137",
+      "error": null
+    },
+    {
+      "id": "mh-010",
+      "question": "Vue 插件可以通过哪种应用实例方法向整个应用注入资源？该应用实例方法在基于侦听器的动画示例中与哪个库配合使用？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "app.provide，gsap",
+      "prediction": "根据资料，Vue 插件可以通过 `app.provide()` 使一个资源可被注入进整个应用 [2]。资料中提到的基于侦听器的动画示例与 `gsap` 库配合使用 [5]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确包含app.provide和gsap两个核心事实，无矛盾信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 2,
+        "ndcg": 0.6241
+      },
+      "latency_ms": 4872.9,
+      "prompt_tokens": 564,
+      "completion_tokens": 47,
+      "trace_id": "e5ed5f9ed7564efe",
+      "error": null
+    },
+    {
+      "id": "mh-011",
+      "question": "Vue 中用于校验 prop 类型是否匹配的自定义类，其校验机制依赖哪个 JavaScript 运算符？该运算符在编译时宏命令 $ref 生成的代码中，用于访问响应式变量的哪个属性？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "instanceof；.value",
+      "prediction": "校验自定义类 prop 类型依赖 `instanceof` 运算符 [2][4]；在 `$ref()` 编译生成的代码中，该运算符并未用于访问响应式变量属性——访问响应式变量用的是 `.value` 属性 [1][3]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "包含instanceof和.value核心事实，无矛盾信息",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 3,
+        "ndcg": 0.5706
+      },
+      "latency_ms": 5253.7,
+      "prompt_tokens": 579,
+      "completion_tokens": 55,
+      "trace_id": "9a07a02eeb1e495e",
+      "error": null
+    },
+    {
+      "id": "mh-012",
+      "question": "Vue 的 import map 示例中，浏览器从哪个 URL 加载 vue 模块？该模块的响应性 API 与 Solid 和 Angular 基于 getter 的 API 相比，在访问值时有什么不同？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "https://unpkg.com/vue@3/dist/vue.esm-browser.js；没有 ref 解包，总是需要通过 () 来访问值",
+      "prediction": "**Vue 模块的加载 URL：** 浏览器从 `https://unpkg.com/vue@3/dist/vue.esm-browser.js` 加载 vue 模块 [5]。\n\n**访问值方式的差异：** Vue 的 ref 使用 `.value` 来访问值，而 Solid 和 Angular 基于 getter 的 API 使用 `()` 来访问值 [1]。资料指出 `()` 比 `.value` 略微省事，但更新值却更冗长 [1]。此外，Solid 和 Angular 的 getter 风格没有 ref 解包，总是需要通过 `()` 来访问值，这使得值的访问在任何地方都是一致的，也意味着可以将原始信号作为组件的参数传递下去 [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": false,
+        "refused": false,
+        "reason": "标准答案称Vue没有ref解包，需用()访问值；系统回答称Vue用.value，与标准矛盾。",
+        "judge": "llm",
+        "score": 0.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 0.8503
+      },
+      "latency_ms": 5562.3,
+      "prompt_tokens": 636,
+      "completion_tokens": 158,
+      "trace_id": "704f4eb937914d2b",
+      "error": null
+    },
+    {
+      "id": "mh-013",
+      "question": "在组合式 API 中，当调用 onMounted 时，Vue 会自动将回调函数注册到哪里？注册后，可以通过什么方式访问模板中的 <p> 元素并对其执行 DOM 操作？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "当前正被初始化的组件实例上；pElementRef.value",
+      "prediction": "当调用 `onMounted` 时，Vue 会自动将回调函数注册到当前正被初始化的组件实例上 [1]。\n\n注册后，可以通过 `pElementRef.value` 访问模板中的 `<p>` 元素，并直接对其执行 DOM 操作（例如修改它的 `textContent`）[2]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确包含注册到组件实例和pElementRef.value访问两个核心事实，无矛盾。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 0.5,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 0.6131
+      },
+      "latency_ms": 4137.4,
+      "prompt_tokens": 472,
+      "completion_tokens": 69,
+      "trace_id": "80f8d43851074c08",
+      "error": null
+    },
+    {
+      "id": "mh-014",
+      "question": "在 Vue 组件中，若想将原始信号作为组件的参数传递下去，需要采用哪种基于 getter 的 API 风格？这种风格下，当使用 withDefaults 为可变引用类型设置默认值时，应该如何处理以避免意外修改？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "Solid 和 Angular 的 getter 风格；在函数中包装",
+      "prediction": "**结论：**\n\n1. 若想将原始信号作为组件的参数传递下去，需要采用 **Solid 和 Angular 基于 getter 的 API 风格** [1]。\n\n2. 使用 `withDefaults` 为可变引用类型（如数组或对象）设置默认值时，**应该在函数中进行包装**，以避免意外修改和外部副作用 [2]。这样可以确保每个组件实例都会获得自己默认值的副本 [2]。当使用解构时，则**不**是必要的 [2]。\n\n**依据：**\n\n- 资料 [1] 指出，Solid 和 Angular 基于 getter 的 API 风格在 Vue 组件中使用时，没有 ref 解包，总是需要通过 `()` 来访问值，这也意味着可以将原始信号作为组件的参数传递下去 [1]。\n- 资料 [2] 说明，使用 `withDefaults` 时，默认值的可变引用类型应该在函数中进行包装，以避免意外修改和外部副作用，确保每个组件实例获得自己默认值的副本；使用解构时则不需要这样做 [2]。\n- 资料 [4] 给出了示例写法：`labels: () => ['one', 'two']`，即用函数包装数组默认值 [4]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确指出Solid和Angular的getter风格，并说明用函数包装默认值以避免修改。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 5165.9,
+      "prompt_tokens": 549,
+      "completion_tokens": 259,
+      "trace_id": "ec2bfcc4a5944379",
+      "error": null
+    },
+    {
+      "id": "mh-015",
+      "question": "在全局注册 v-highlight 指令时，应用实例是通过哪个方法完成注册的？而在组合式 API 的 <script setup> 中，该指令对应的变量名是什么？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "app.directive；vHighlight",
+      "prediction": "全局注册时使用的是 `app.directive('highlight', {...})` 方法 [2]；在 `<script setup>` 中对应的变量名是 `vHighlight` [1][3][4]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答包含app.directive和vHighlight，与标准答案核心事实一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 2,
+        "ndcg": 0.9575
+      },
+      "latency_ms": 3494.8,
+      "prompt_tokens": 446,
+      "completion_tokens": 43,
+      "trace_id": "e4d1e4043bab4274",
+      "error": null
+    },
+    {
+      "id": "mh-016",
+      "question": "在 Vue 中，当 prop 的 type 被指定为自定义类 Person 时，Vue 会通过什么机制来校验传入的值？而要在单文件组件中启用这种类型检查，需要在 script 标签上添加什么属性？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "instanceof；lang=\"ts\"",
+      "prediction": "Vue 会通过 `instanceof Person` 来校验 `author` prop 的值是否是 `Person` 类的一个实例 [1]；`type` 也可以是自定义的类或构造函数，Vue 会通过 `instanceof` 检查类型是否匹配 [2]。\n\n要在单文件组件中使用 TypeScript，需要在 `<script>` 标签上加上 `lang=\"ts\"` 的 attribute [3]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确包含instanceof和lang=\"ts\"两个核心事实，无矛盾信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 0.9197
+      },
+      "latency_ms": 3734.5,
+      "prompt_tokens": 461,
+      "completion_tokens": 87,
+      "trace_id": "8f1e9ac712da4fab",
+      "error": null
+    },
+    {
+      "id": "mh-017",
+      "question": "在无需构建步骤的情况下，通过 CDN 和原生 ES 模块使用 Vue 时，从 unpkg 导入的模块文件叫什么名字？该文件在单文件组件示例中又是如何被导入的？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "vue.esm-browser.js；import { ref } from 'vue'",
+      "prediction": "根据资料 [1]，通过 CDN 以及原生 ES 模块使用 Vue 时，从 unpkg 导入的模块文件是 `vue.esm-browser.js`（资料中给出的导入路径为 `https://unpkg.com/vue@3/dist/vue.esm-browser.j`）[1]。\n\n关于单文件组件的导入方式，资料 [2] 给出的示例是：`import MyComponent from './MyComponent.vue'`，即像导入其他 ES 模块一样导入单文件组件 [2]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": false,
+        "refused": false,
+        "reason": "文件名称正确，但单文件组件导入示例错误，标准答案为import { ref } from 'vue'",
+        "judge": "llm",
+        "score": 0.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 0.0,
+        "hit": false,
+        "first_hit_rank": null,
+        "ndcg": 0.0
+      },
+      "latency_ms": 3666.0,
+      "prompt_tokens": 523,
+      "completion_tokens": 112,
+      "trace_id": "a06cd21e0c134544",
+      "error": null
+    },
+    {
+      "id": "mh-018",
+      "question": "Vue 团队曾通过哪个实验性功能探索改变 JavaScript 语义的方向，而该功能的作者也是哪个构建工具的作者？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "响应性语法糖；Vite",
+      "prediction": "Vue 团队曾通过一个名为“响应性语法糖”的实验性功能来探索这个方向 [1][4]。该功能已在最新的 3.4 版本中被移除 [4]。\n\n资料中没有说明响应性语法糖的作者是谁，也没有说明该功能作者与哪个构建工具的作者是同一人。资料[3][5]只提到 Vite 的作者是尤雨溪，他同时也是 Vue 的作者，但未将其与响应性语法糖的作者关联起来。因此，关于“该功能的作者也是哪个构建工具的作者”这一部分，根据现有资料无法回答。",
+      "prediction_refused": true,
+      "verdict": {
+        "judged": true,
+        "correct": false,
+        "refused": true,
+        "reason": "未答出Vite，且称无法回答，缺少标准答案核心事实",
+        "judge": "llm",
+        "score": 0.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 0.5,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 0.6131
+      },
+      "latency_ms": 5292.4,
+      "prompt_tokens": 596,
+      "completion_tokens": 122,
+      "trace_id": "3b2d010abbf14537",
+      "error": null
+    },
+    {
+      "id": "mh-019",
+      "question": "在 Vue 中，如果使用基于类型的 prop 声明 defineProps<{ msg: string }>，它会被编译成什么？这种声明方式通常写在哪种文件格式中？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "{ msg: { type: String, required: true }}，单文件组件（*.vue 文件）",
+      "prediction": "**结论：**\n\n`defineProps<{ msg: string }>` 会被编译为 `{ msg: { type: String, required: true }}` [2]。\n\n这种基于类型的声明方式通常写在 `<script setup>` 中 [3]。\n\n**依据：**\n\n- 资料 [2] 明确说明：Vue 会尽最大努力在运行时按照 prop 的类型标注进行编译，并举例 `defineProps<{ msg: string }>` 会被编译为 `{ msg: { type: String, required: true }}`。\n- 资料 [3] 指出：使用 `<script setup>`，也可以使用类型标注来声明 props。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": false,
+        "refused": false,
+        "reason": "编译结果正确，但文件格式答成<script setup>，标准答案是单文件组件（*.vue）",
+        "judge": "llm",
+        "score": 0.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 0.5,
+        "hit": true,
+        "first_hit_rank": 2,
+        "ndcg": 0.3869
+      },
+      "latency_ms": 4101.9,
+      "prompt_tokens": 519,
+      "completion_tokens": 136,
+      "trace_id": "3d57e95412214f8c",
+      "error": null
+    },
+    {
+      "id": "mh-020",
+      "question": "通过 CDN 使用 Vue 时，全局构建版本把顶层 API 暴露在哪个全局对象上？该对象在搭配 TypeScript 使用组合式 API 时，defineProps() 宏函数支持从它的参数中推导类型，这种声明方式被称为什么？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "Vue 对象；运行时声明",
+      "prediction": "**第一问：** 全局构建版本的 Vue 把所有顶层 API 以属性的形式暴露在全局的 `Vue` 对象上 [1]。\n\n**第二问：** 当使用 `<script setup>` 时，`defineProps()` 宏函数支持从它的参数中推导类型 [2]，这种声明方式被称为“基于类型的声明” [3]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": false,
+        "refused": false,
+        "reason": "第二问应为“运行时声明”，系统回答“基于类型的声明”与标准答案矛盾。",
+        "judge": "llm",
+        "score": 0.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 0.5,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 0.6131
+      },
+      "latency_ms": 4221.1,
+      "prompt_tokens": 450,
+      "completion_tokens": 76,
+      "trace_id": "e1335bc188a74e28",
+      "error": null
+    },
+    {
+      "id": "mh-021",
+      "question": "在 Vue 中遍历对象属性时，第三个参数表示位置索引的写法是什么？这种写法所在的模板结构在 SSR 激活时，只有哪些节点需要被遍历？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "v-for=\"(value, key, index) in myObject\"；区块节点和其动态子节点",
+      "prediction": "遍历对象属性时，第三个参数表示位置索引的写法是 `<li v-for=\"(value, key, index) in myObject\">` [1]。\n\n这种写法所在的模板结构在 SSR 激活时，只有区块节点和其动态子节点需要被遍历 [2]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答包含标准答案核心事实，无矛盾信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 3599.7,
+      "prompt_tokens": 406,
+      "completion_tokens": 58,
+      "trace_id": "b6f35373cc504fd2",
+      "error": null
+    },
+    {
+      "id": "mh-022",
+      "question": "在 Vue 中，当模板表达式变得臃肿难以维护时，官方推荐使用哪种属性来简化逻辑？这种属性所属的模板语法底层会被编译成什么？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "计算属性；高度优化的 JavaScript 代码",
+      "prediction": "官方推荐使用计算属性（computed）来替换复杂的表达式 [4]。Vue 模板在底层会被预编译成虚拟 DOM 渲染函数 [1][6]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": false,
+        "refused": false,
+        "reason": "计算属性正确，但底层编译结果应为高度优化的JavaScript代码，而非虚拟DOM渲染函数",
+        "judge": "llm",
+        "score": 0.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 2,
+        "ndcg": 0.6934
+      },
+      "latency_ms": 3975.9,
+      "prompt_tokens": 487,
+      "completion_tokens": 36,
+      "trace_id": "56a6ad10ff214343",
+      "error": null
+    },
+    {
+      "id": "mh-023",
+      "question": "在讲解作用域插槽时，子组件通过什么方式将 props 传给插槽函数？而自定义指令在组件上使用时，会始终应用于组件的哪个部分？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "以函数形式传递；根节点",
+      "prediction": "子组件会将相应的 props 作为参数传给插槽函数 [1][4]。自定义指令在组件上使用时，会始终应用于组件的根节点 [3]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确包含核心事实：props作为参数传给插槽函数，指令应用于根节点。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.1838
+      },
+      "latency_ms": 5501.4,
+      "prompt_tokens": 631,
+      "completion_tokens": 34,
+      "trace_id": "693e25a7244c4137",
+      "error": null
+    },
+    {
+      "id": "mh-024",
+      "question": "计算属性默认是只读的，若想创建可写计算属性，需要同时提供哪两个选项？在大型应用中，为了避免注入名冲突，官方建议使用什么作为注入名？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "getter 和 setter；Symbol",
+      "prediction": "**可写计算属性**：需要同时提供 getter 和 setter [1][2]。\n\n**大型应用中的注入名**：建议使用 Symbol 来作为注入名以避免潜在的冲突 [3]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确给出getter和setter以及Symbol，与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 2,
+        "ndcg": 0.6934
+      },
+      "latency_ms": 4297.1,
+      "prompt_tokens": 525,
+      "completion_tokens": 43,
+      "trace_id": "8058fe57b74c4104",
+      "error": null
+    },
+    {
+      "id": "mh-025",
+      "question": "reactive() 的局限性中，哪种情况会导致响应性连接丢失，而 ref() 通过什么方式避免了这个问题？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "解构原始类型属性时；ref() 用对象包装值",
+      "prediction": "**结论：** 将响应式对象的原始类型属性解构为本地变量，或将该属性传递给函数时，会丢失响应性连接 [3]；而 ref 可以维持这一响应性连接 [1]，并且可以将 ref 传递给函数，同时保留对最新值和响应式连接的访问 [6]。\n\n**依据：**\n- 对解构操作不友好：当我们将响应式对象的原始类型属性解构为本地变量时，或者将该属性传递给函数时，我们将丢失响应性连接 [3]。\n- 从组合式函数返回一个响应式对象会导致在对象解构过程中丢失与组合式函数内状态的响应性连接；与之相反，ref 则可以维持这一响应性连接 [1]。\n- 另一个 ref 的好处是，与普通变量不同，你可以将 ref 传递给函数，同时保留对最新值和响应式连接的访问 [6]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": false,
+        "refused": false,
+        "reason": "未说明ref通过对象包装值避免问题，仅说维持连接",
+        "judge": "llm",
+        "score": 0.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 0.5,
+        "hit": true,
+        "first_hit_rank": 3,
+        "ndcg": 0.3066
+      },
+      "latency_ms": 6228.3,
+      "prompt_tokens": 638,
+      "completion_tokens": 184,
+      "trace_id": "9342f1f87ce24f1a",
+      "error": null
+    },
+    {
+      "id": "mh-026",
+      "question": "在 Vue 中为组件 props 标注复杂类型时，如果使用运行时声明，需要借助哪个工具类型？该工具类型在将 Vue 组件转为自定义元素类时，导入的 API 名称是什么？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "PropType；defineCustomElement",
+      "prediction": "**结论：**\n\n1. 为组件 props 标注复杂类型时，需要借助的工具类型是 `PropType` [2]。\n2. 将 Vue 组件转为自定义元素类时，导入的 API 名称是 `defineCustomElement` [1][3][4]。\n\n**依据：**\n\n- 资料 [2] 指出，可以使用 `PropType` 这个工具类型来标记更复杂的 props 类型，并给出导入语句 `import type { PropType } from 'vue'` [2]。\n- 资料 [1] 给出 `import { defineCustomElement } from 'vue'`，并说明其作用是将 Vue 组件转为自定义元素类 [1]；资料 [3]、[4] 同样出现 `defineCustomElement` [3][4]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "准确给出PropType和defineCustomElement，无矛盾信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 0.5,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 0.8772
+      },
+      "latency_ms": 4045.3,
+      "prompt_tokens": 452,
+      "completion_tokens": 167,
+      "trace_id": "9f5178a8ed074b53",
+      "error": null
+    },
+    {
+      "id": "mh-027",
+      "question": "Vue 官方项目脚手架工具叫什么名字？该工具的官方文档中强烈建议不要在 Vue 中渲染哪个 HTML 标签？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "create-vue；script",
+      "prediction": "Vue 官方项目脚手架工具叫 create-vue [1][2][4][5]。资料中强烈建议不要在 Vue 中渲染 `<script>` [3]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确给出create-vue和script标签，与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 2,
+        "ndcg": 0.9306
+      },
+      "latency_ms": 3567.5,
+      "prompt_tokens": 517,
+      "completion_tokens": 35,
+      "trace_id": "e4f7d4e2f8024e1a",
+      "error": null
+    },
+    {
+      "id": "mh-028",
+      "question": "Vue 中用于声明响应式状态的 API 创建的对象是什么类型，而处理事件时若想避免在方法内手动调用 event.preventDefault()，可以使用哪种指令修饰符？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "Proxy；.prevent",
+      "prediction": "`reactive()` API 创建的响应式状态对象都是 JavaScript Proxy [1]；处理事件时可以使用 `.prevent` 修饰符，它会告知 `v-on` 指令对触发的事件调用 `event.preventDefault()` [2][3][4]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答准确给出 Proxy 和 .prevent，核心事实与标准答案一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 0.8772
+      },
+      "latency_ms": 3777.6,
+      "prompt_tokens": 590,
+      "completion_tokens": 53,
+      "trace_id": "ba09c82c49d74d47",
+      "error": null
+    },
+    {
+      "id": "mh-029",
+      "question": "Vue 官方项目脚手架工具在创建项目时会提示添加哪些可选功能？其中用于声明响应式状态的 API 是哪个？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "TypeScript 和测试支持；reactive()",
+      "prediction": "**创建项目时的可选功能提示：** 会看到诸如 TypeScript 和测试支持之类的可选功能提示 [1]。\n\n**用于声明响应式状态的 API：** `reactive()` [2][5]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答包含TypeScript和测试支持及reactive()，核心事实一致无矛盾。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.0
+      },
+      "latency_ms": 3983.4,
+      "prompt_tokens": 569,
+      "completion_tokens": 44,
+      "trace_id": "543ae50ea4ae4435",
+      "error": null
+    },
+    {
+      "id": "mh-030",
+      "question": "Vue 官方项目脚手架工具 create-vue 是由哪个团队开发的？该团队开发的、专为基于 Vite 的应用设计的测试运行器叫什么？",
+      "type": "multi_hop",
+      "answerable": true,
+      "gold_answer": "Vitest",
+      "prediction": "**create-vue 的开发团队：** 资料中没有说明 create-vue 是由哪个团队开发的，只提到它是 Vue 提供的官方脚手架工具 [3][4][5]。\n\n**测试运行器的名称：** Vitest。它由 Vue / Vite 团队成员开发，是一个追求更快运行速度的测试运行器，主要针对基于 Vite 的应用设计 [1][2]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": false,
+        "reason": "回答明确给出测试运行器为Vitest，与标准答案核心事实一致。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": 1.0,
+        "hit": true,
+        "first_hit_rank": 1,
+        "ndcg": 1.2372
+      },
+      "latency_ms": 3931.3,
+      "prompt_tokens": 684,
+      "completion_tokens": 81,
+      "trace_id": "7e0d127cfc04455f",
+      "error": null
+    },
+    {
+      "id": "un-001",
+      "question": "在 Vue 中，哪个 v-model 修饰符会在输入框有 type=\"decimal\" 时自动启用？",
+      "type": "unanswerable",
+      "answerable": false,
+      "gold_answer": null,
+      "prediction": "根据现有资料无法回答。\n\n资料中没有提到任何会在输入框有 `type=\"decimal\"` 时自动启用的 `v-model` 修饰符。资料中只提到：\n\n- `number` 修饰符会在输入框有 `type=\"number\"` 时自动启用 [1]。\n- `v-model` 的内置修饰符包括 `.trim`、`.number` 和 `.lazy` [3]。\n\n关于 `type=\"decimal\"` 的相关信息，资料中完全没有出现。",
+      "prediction_refused": true,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": true,
+        "reason": "系统明确表示资料不足，并指出type=\"decimal\"在资料中不存在，未编造答案。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": null,
+        "hit": null,
+        "first_hit_rank": null,
+        "ndcg": null
+      },
+      "latency_ms": 5057.7,
+      "prompt_tokens": 489,
+      "completion_tokens": 106,
+      "trace_id": "4eb79ff5e5da40c7",
+      "error": null
+    },
+    {
+      "id": "un-002",
+      "question": "浏览高级功能和常见用户界面的示例的标题是什么？",
+      "type": "unanswerable",
+      "answerable": false,
+      "gold_answer": null,
+      "prediction": "根据现有资料无法回答。资料中只出现了“浏览核心功能和常见用户界面的示例”这一表述 [1][3]，没有提到“高级功能”相关的标题。",
+      "prediction_refused": true,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": true,
+        "reason": "系统指出资料中无“高级功能”，仅存在“核心功能”表述，未编造事实。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": null,
+        "hit": null,
+        "first_hit_rank": null,
+        "ndcg": null
+      },
+      "latency_ms": 2934.7,
+      "prompt_tokens": 389,
+      "completion_tokens": 36,
+      "trace_id": "02552aa813494a89",
+      "error": null
+    },
+    {
+      "id": "un-003",
+      "question": "使用插槽时，`<GlamourButton>` 仅负责渲染外层的什么元素？",
+      "type": "unanswerable",
+      "answerable": false,
+      "gold_answer": null,
+      "prediction": "根据现有资料无法回答。\n\n资料中只提到 `<FancyButton>` 仅负责渲染外层的 `<button>` 元素 [1]，没有关于 `<GlamourButton>` 的任何信息。",
+      "prediction_refused": true,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": true,
+        "reason": "指出资料无GlamourButton，仅陈述资料中FancyButton的真实信息，未编造。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": null,
+        "hit": null,
+        "first_hit_rank": null,
+        "ndcg": null
+      },
+      "latency_ms": 3399.0,
+      "prompt_tokens": 423,
+      "completion_tokens": 41,
+      "trace_id": "4241656f3d64427a",
+      "error": null
+    },
+    {
+      "id": "un-004",
+      "question": "lumina-vue 最后发布的版本适配于哪个 Vue 版本？",
+      "type": "unanswerable",
+      "answerable": false,
+      "gold_answer": null,
+      "prediction": "根据现有资料无法回答。资料中只提到 petite-vue 最后发布的版本适配于 Vue 3.2.27 [1]，没有关于 lumina-vue 的任何信息。",
+      "prediction_refused": true,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": true,
+        "reason": "系统明确表示资料不足，并指出lumina-vue不存在，仅陈述了资料中petite-vue的真实信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": null,
+        "hit": null,
+        "first_hit_rank": null,
+        "ndcg": null
+      },
+      "latency_ms": 2463.1,
+      "prompt_tokens": 359,
+      "completion_tokens": 39,
+      "trace_id": "b4bd847f8b6d4f4f",
+      "error": null
+    },
+    {
+      "id": "un-005",
+      "question": "在匿名函数式组件的代码中，FComponent.emits 里 updateStatus 的验证函数返回什么？",
+      "type": "unanswerable",
+      "answerable": false,
+      "gold_answer": null,
+      "prediction": "根据现有资料无法回答。资料中只出现了 `sendMessage` 的验证函数，没有出现 `updateStatus` 的相关信息 [1][2]。",
+      "prediction_refused": true,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": true,
+        "reason": "系统指出资料中无updateStatus，只提及sendMessage，未编造。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": null,
+        "hit": null,
+        "first_hit_rank": null,
+        "ndcg": null
+      },
+      "latency_ms": 4649.5,
+      "prompt_tokens": 387,
+      "completion_tokens": 33,
+      "trace_id": "3337d39c58414bf6",
+      "error": null
+    },
+    {
+      "id": "un-006",
+      "question": "Vue 与 Django 搭配使用时，Django 自带了什么官方插件？",
+      "type": "unanswerable",
+      "answerable": false,
+      "gold_answer": null,
+      "prediction": "根据现有资料无法回答。资料中只提到 Vue 与 Laravel 搭配时，Laravel 自带了官方的 Vite 插件 [1]，没有提及 Vue 与 Django 搭配使用的任何信息。",
+      "prediction_refused": true,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": true,
+        "reason": "明确表示资料不足，并指出资料只提及Vue与Laravel，未编造Django插件。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": null,
+        "hit": null,
+        "first_hit_rank": null,
+        "ndcg": null
+      },
+      "latency_ms": 4081.1,
+      "prompt_tokens": 393,
+      "completion_tokens": 46,
+      "trace_id": "f829afdd418447bb",
+      "error": null
+    },
+    {
+      "id": "un-007",
+      "question": "在插件示例中，$translate 函数接收 'welcome.goodbye' 字符串后，在运行时会被替换为什么值？",
+      "type": "unanswerable",
+      "answerable": false,
+      "gold_answer": null,
+      "prediction": "根据现有资料无法回答。\n\n资料中只提到 `$translate` 函数接收以 `.` 作为分隔符的 `key` 字符串，用于在用户提供的翻译字典中查找对应语言的文本 [1][3][5]；并且给出的示例是 `$translate('greetings.hello')` 在运行时被替换为 `Bonjour!` [2]。资料中没有出现 `'welcome.goodbye'` 这个字符串，也没有说明它会被替换为什么值。",
+      "prediction_refused": true,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": true,
+        "reason": "指出资料中无'welcome.goodbye'，仅陈述实际存在的示例，未编造。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": null,
+        "hit": null,
+        "first_hit_rank": null,
+        "ndcg": null
+      },
+      "latency_ms": 3449.6,
+      "prompt_tokens": 498,
+      "completion_tokens": 102,
+      "trace_id": "508e1231ce5a4781",
+      "error": null
+    },
+    {
+      "id": "un-008",
+      "question": "如果 hasWarning 变为 true，class 列表会变成什么？",
+      "type": "unanswerable",
+      "answerable": false,
+      "gold_answer": null,
+      "prediction": "根据现有资料无法回答。\n\n资料中没有出现 `hasWarning` 这个字段，也没有说明它变为 `true` 时 class 列表会变成什么。\n\n资料中只提到：当 `isActive` 或 `hasError` 改变时 class 列表会随之更新，例如 `hasError` 变为 `true` 时 class 列表变成 `\"static active text-danger\"` [1]；并且可以在对象中写多个字段来操作多个 class [2]。这些都不足以推出 `hasWarning` 的情况。",
+      "prediction_refused": true,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": true,
+        "reason": "明确说明资料中无hasWarning字段，未编造，仅陈述已有信息",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": null,
+        "hit": null,
+        "first_hit_rank": null,
+        "ndcg": null
+      },
+      "latency_ms": 3267.5,
+      "prompt_tokens": 400,
+      "completion_tokens": 112,
+      "trace_id": "4b7a97b104174b48",
+      "error": null
+    },
+    {
+      "id": "un-009",
+      "question": "Svelte 5 的数据响应式是基于什么实现的？",
+      "type": "unanswerable",
+      "answerable": false,
+      "gold_answer": null,
+      "prediction": "根据现有资料，Svelte 选择通过**编译时**实现响应性 [1][2]。它对代码进行分析和转换，以模拟响应性；该编译步骤允许框架改变 JavaScript 本身的语义，例如隐式地注入执行依赖性分析的代码，以及围绕对本地定义的变量的访问进行作用触发 [2]。\n\n资料中只提到 Svelte 这一框架的响应性实现方式，没有单独提及\"Svelte 5\"这一版本的信息。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": true,
+        "reason": "系统指出资料未提及Svelte 5，仅陈述Svelte编译时响应性，未编造版本信息。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": null,
+        "hit": null,
+        "first_hit_rank": null,
+        "ndcg": null
+      },
+      "latency_ms": 3738.2,
+      "prompt_tokens": 433,
+      "completion_tokens": 96,
+      "trace_id": "6d313f8249d64807",
+      "error": null
+    },
+    {
+      "id": "un-010",
+      "question": "在 Vue 中，`<Portal>` 接收哪个 prop 来指定传送的目标？",
+      "type": "unanswerable",
+      "answerable": false,
+      "gold_answer": null,
+      "prediction": "根据现有资料无法回答。资料中只提到 `<Teleport>` 接收 `to` prop 来指定传送的目标 [1]，没有关于 `<Portal>` 组件的信息。",
+      "prediction_refused": true,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": true,
+        "reason": "指出资料无Portal信息，仅陈述Teleport的to prop，未编造",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": null,
+        "hit": null,
+        "first_hit_rank": null,
+        "ndcg": null
+      },
+      "latency_ms": 4408.6,
+      "prompt_tokens": 505,
+      "completion_tokens": 37,
+      "trace_id": "b52a9b70c9174f13",
+      "error": null
+    },
+    {
+      "id": "un-011",
+      "question": "在示例中，父组件的 myRef 是 undefined，而子组件的 zephyr 是多少？",
+      "type": "unanswerable",
+      "answerable": false,
+      "gold_answer": null,
+      "prediction": "根据现有资料无法回答。\n\n资料[1]只提到：在示例中父组件的 `myRef` 是 undefined，而子组件的 `model` 是 1 [1]。资料中没有出现关于子组件 `zephyr` 的任何信息，因此无法回答它的值。",
+      "prediction_refused": true,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": true,
+        "reason": "系统指出资料无zephyr信息，仅陈述资料中的model=1，未编造",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": null,
+        "hit": null,
+        "first_hit_rank": null,
+        "ndcg": null
+      },
+      "latency_ms": 3562.0,
+      "prompt_tokens": 419,
+      "completion_tokens": 62,
+      "trace_id": "96ff187f2bbd4da5",
+      "error": null
+    },
+    {
+      "id": "un-012",
+      "question": "在 Nexa 3.5 和 @nexa/language-tools 2.1 中，由 useViewRef() 创建的 ref 类型可以基于什么自动推断为静态类型？",
+      "type": "unanswerable",
+      "answerable": false,
+      "gold_answer": null,
+      "prediction": "根据现有资料无法回答。资料中没有出现「Nexa 3.5」「@nexa/language-tools 2.1」或「useViewRef()」这些名称，因此无法据此说明该 ref 类型的推断依据。\n\n资料中只提到：在 Vue 3.5 和 @vue/language-tools 2.1 中，由 `useTemplateRef()` 创建的 ref 类型可以基于匹配的 ref attribute 所在的元素自动推断为静态类型 [1][3]；使用 TypeScript 时，Vue 的 IDE 支持和 `vue-tsc` 会根据匹配的 `ref` attribute 所用的元素或组件自动推断 `input.value` 的类型 [5]。",
+      "prediction_refused": true,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": true,
+        "reason": "指出问题实体不存在，仅陈述资料中真实存在的Vue信息，未编造",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": null,
+        "hit": null,
+        "first_hit_rank": null,
+        "ndcg": null
+      },
+      "latency_ms": 4794.0,
+      "prompt_tokens": 615,
+      "completion_tokens": 151,
+      "trace_id": "ff6b7335d3eb49df",
+      "error": null
+    },
+    {
+      "id": "un-013",
+      "question": "在匿名函数式组件的代码中，FComponent.emits 里 dispatchNotice 的验证函数返回什么？",
+      "type": "unanswerable",
+      "answerable": false,
+      "gold_answer": null,
+      "prediction": "根据现有资料无法回答。\n\n资料中只出现了 `sendMessage` 的验证函数，没有出现 `dispatchNotice`：\n\n- [1] 中 `FComponent.emits = {sendMessage: (value: unknown) => typeof value === 'string'}`，其验证函数返回 `typeof value === 'string'`。\n- [2] 中 `FComponent.emits = {sendMessage: (value) => typeof value === 'string'}`，其验证函数同样返回 `typeof value === 'string'`。\n\n资料里完全没有关于 `dispatchNotice` 的信息，因此无法回答它的验证函数返回什么。",
+      "prediction_refused": true,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": true,
+        "reason": "系统指出资料中无dispatchNotice，仅陈述存在的sendMessage信息，未编造。",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": null,
+        "hit": null,
+        "first_hit_rank": null,
+        "ndcg": null
+      },
+      "latency_ms": 3482.9,
+      "prompt_tokens": 387,
+      "completion_tokens": 131,
+      "trace_id": "2335562638f64d33",
+      "error": null
+    },
+    {
+      "id": "un-014",
+      "question": "响应式引用 ref 的 getter 应该只做什么？",
+      "type": "unanswerable",
+      "answerable": false,
+      "gold_answer": null,
+      "prediction": "根据资料，计算属性的 getter 应只做计算，没有任何其他副作用，其职责应该仅为计算和返回该值 [1][2]。\n\n资料还明确列出了 getter 中不应做的事：不要改变其他状态、不要做异步请求、不要更改 DOM [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": false,
+        "refused": false,
+        "reason": "问题问ref的getter，系统答计算属性getter，未说明两者不同，张冠李戴",
+        "judge": "llm",
+        "score": 0.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": null,
+        "hit": null,
+        "first_hit_rank": null,
+        "ndcg": null
+      },
+      "latency_ms": 3368.5,
+      "prompt_tokens": 431,
+      "completion_tokens": 58,
+      "trace_id": "3d98ff93e9ba46d1",
+      "error": null
+    },
+    {
+      "id": "un-015",
+      "question": "对于大于 Number.MAX_SAFE_LIMIT 的输入值，由于 JavaScript 数字精度的限制，结果可能怎么样？",
+      "type": "unanswerable",
+      "answerable": false,
+      "gold_answer": null,
+      "prediction": "根据现有资料无法回答。\n\n资料中只提到大于 `Number.MAX_SAFE_INTEGER`（9007199254740991）的输入值，由于 JavaScript 数字精度的限制，结果可能不准确 [1][3][4]。资料里没有出现 `Number.MAX_SAFE_LIMIT` 这一名称，因此无法针对它作答。",
+      "prediction_refused": true,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": true,
+        "reason": "指出问题中实体不存在，仅陈述资料实际内容，未编造",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": null,
+        "hit": null,
+        "first_hit_rank": null,
+        "ndcg": null
+      },
+      "latency_ms": 3325.1,
+      "prompt_tokens": 480,
+      "completion_tokens": 75,
+      "trace_id": "83cb3cae3dd1431b",
+      "error": null
+    },
+    {
+      "id": "un-016",
+      "question": "当一个组件同时接收默认插槽和具名插槽时，所有位于顶级的非 <slot-frame> 节点都被隐式地视为什么？",
+      "type": "unanswerable",
+      "answerable": false,
+      "gold_answer": null,
+      "prediction": "根据资料，所有位于顶级的非 `<template>` 节点都被隐式地视为默认插槽的内容 [1]。\n\n注：你问题中写的是 `<slot-frame>`，而资料里说的是非 `<template>` 节点 [1]。",
+      "prediction_refused": false,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": true,
+        "reason": "指出问题中实体不存在，仅陈述资料实际内容，未编造",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": null,
+        "hit": null,
+        "first_hit_rank": null,
+        "ndcg": null
+      },
+      "latency_ms": 3029.7,
+      "prompt_tokens": 408,
+      "completion_tokens": 50,
+      "trace_id": "179207336d2d4eee",
+      "error": null
+    },
+    {
+      "id": "un-017",
+      "question": "在插件示例中，$localize 函数接收 'salutations.bonjour' 字符串后，在运行时会被替换为什么值？",
+      "type": "unanswerable",
+      "answerable": false,
+      "gold_answer": null,
+      "prediction": "根据现有资料无法回答。\n\n资料中只涉及 `$translate` 函数及其示例 `$translate('greetings.hello')` 在运行时被替换为 `Bonjour!` [1][2]，没有出现 `$localize` 函数，也没有出现 `'salutations.bonjour'` 这个字符串及其对应替换值的信息。",
+      "prediction_refused": true,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": true,
+        "reason": "指出资料无$localize及该字符串，仅陈述实际存在的$translate信息，未编造",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": null,
+        "hit": null,
+        "first_hit_rank": null,
+        "ndcg": null
+      },
+      "latency_ms": 3703.5,
+      "prompt_tokens": 613,
+      "completion_tokens": 74,
+      "trace_id": "a9cec8678aa944a0",
+      "error": null
+    },
+    {
+      "id": "un-018",
+      "question": "在 NexaFrame 中，一个子组件只会在什么条件下才会更新？",
+      "type": "unanswerable",
+      "answerable": false,
+      "gold_answer": null,
+      "prediction": "根据现有资料无法回答。资料中没有出现「NexaFrame」这一名称，也没有关于它的任何信息。\n\n资料中只提到 Vue 的规则：一个子组件只会在其至少一个 props 改变时才会更新 [1]。",
+      "prediction_refused": true,
+      "verdict": {
+        "judged": true,
+        "correct": true,
+        "refused": true,
+        "reason": "指出NexaFrame不存在，仅陈述资料中Vue规则，未编造",
+        "judge": "llm",
+        "score": 1.0
+      },
+      "retrieval": {
+        "k": 5,
+        "span_recall": null,
+        "hit": null,
+        "first_hit_rank": null,
+        "ndcg": null
+      },
+      "latency_ms": 3870.7,
+      "prompt_tokens": 514,
+      "completion_tokens": 50,
+      "trace_id": "28609e53dc5c4f46",
+      "error": null
+    }
+  ]
+}
