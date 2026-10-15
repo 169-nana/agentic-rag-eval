@@ -207,17 +207,27 @@ if __name__ == "__main__":
     index = load_index()
     print(f"索引构建完成：{index.total} 个片段，平均每块 {index.avg_length:.1f} 个词")
     print("=" * 74)
+    print("语料：Vue 3 官方中文文档")
+    print()
+    print("⚠️ 注意最后那个【负例】—— 语料里根本没有「量子计算机」这个话题，")
+    print("   但 BM25 照样返回一堆高分片段。这就是纯词法检索的致命弱点：")
+    print("   它分不清『真相关』和『恰好含高频词』。")
+    print("=" * 74)
 
     questions = [
-        "无锡市在哪里",
-        "林澈毕业于哪所大学",
-        "澜芯 X1 是什么时候发布的",
-        "企业版 SLA 承诺多少可用性",
-        "量子计算机有什么进展",        # 库里没有这个话题
+        # 应该命中的
+        "怎么注册全局组件",
+        "computed 和 watch 有什么区别",
+        "v-if 和 v-show 该怎么选",
+        "props 可以被子组件修改吗",
+        # 负例：语料里没有这个话题，但 BM25 依然会给高分
+        "量子计算机有什么进展",
     ]
 
     for question in questions:
-        print(f"\n【问】{question}")
+        is_negative = "量子" in question
+        label = "【问·负例】" if is_negative else "【问】"
+        print(f"\n{label}{question}")
         print(f"  查询分词：{segment.segment_for_query(question)}")
 
         hits = index.search(question, top_k=3)
@@ -226,3 +236,6 @@ if __name__ == "__main__":
         for rank, hit in enumerate(hits, start=1):
             preview = hit.content.replace("\n", " ")[:50]
             print(f"   {rank}. 得分 {hit.score:6.3f}  [块{hit.chunk_id}] {preview}...")
+        if is_negative:
+            print("   ↑ 这些全部是无关内容。BM25 无法判断『没有答案』，")
+            print("     它只会返回『碰巧词最多』的那几块 —— 所以需要向量通道 + 精排。")
