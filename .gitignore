@@ -38,3 +38,16 @@ Thumbs.db
 
 # 本地 embedding 模型（2.4GB，不入版本库）
 backend/.models/
+
+# ---- 个人求职材料，不入公开仓库 ----
+# 这些文件保留在本地磁盘上（用 --cached 移除，不删文件），
+# 但不应出现在版本库里：包含简历措辞、面试问答稿、项目定位等个人信息，
+# 以及人工标注答案（属于评测集的"答案纸"）。
+docs/INTERVIEW_PACK.md
+docs/INTERVIEW_STUDY.md
+docs/PROJECT_BRIEF.md
+LEARNING_PATH.md
+PROJECT_PLAN.md
+backend/eval/datasets/human_labels.jsonl
+backend/eval/datasets/calibration_key.jsonl
+backend/eval/datasets/calibration_worksheet.md
