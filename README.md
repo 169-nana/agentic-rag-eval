@@ -4,10 +4,8 @@
 > `问题分解 → 混合检索 → 相关性自评 → 失败回退重检索 → 上下文压缩 → 作答 → 引用溯源`
 > 的知识库问答 Agent，配有**自建评测集、消融实验与统计显著性检验**。
 >
-> 📄 [面试材料包](docs/INTERVIEW_PACK.md)（简历条目 / 面试稿 / 演示脚本）
-> · [检索踩坑记录](docs/RETRIEVAL_NOTES.md)
+> 📄 [检索踩坑记录](docs/RETRIEVAL_NOTES.md)
 > · [评测踩坑记录](docs/EVAL_NOTES.md)
-> · [完整方案](PROJECT_PLAN.md)
 
 ---
 
@@ -186,7 +184,6 @@ flowchart TD
 
 **⑧ 交付物（已完成）**
 
-- [x] [面试材料包](docs/INTERVIEW_PACK.md)：简历 3 条（数字已填）/ 面试三题 / 4 个失败案例分析 / 演示脚本 / 数据速查
 - [x] README：结果速览表 + mermaid 架构图 + 目录结构校正 + 可追溯评测快照
 - [x] `scripts/smoke_test.py`：14 项协议断言，可直接进 CI
 
@@ -322,7 +319,7 @@ eval/reports/selftest__oracle__rule__20260920T034906Z.json
 
 ### 为什么先建评测（而不是先写检索）
 
-没有评测集时，"我优化了 RAG"这句话在面试里一句都站不住：
+没有评测集时，"我优化了 RAG"这句话在实际使用中一句都站不住：
 你无法证明改动有效，也无法发现"改了 A 结果 B 退化了"。
 所以顺序必须是 **建尺子 → 量基线 → 再优化**。
 
@@ -361,11 +358,12 @@ eval/reports/selftest__oracle__rule__20260920T034906Z.json
 - `RuleBasedJudge`：字符 bigram 相似度，零成本、完全确定。
   **它只用来验证评测框架能跑通，数值不能对外。**
 - `LLMJudge`：真实指标来源。
-- **人工校准**：抽 20~30 条人工标注（`eval/datasets/human_labels.jsonl`），
+- **人工校准**：抽 20~30 条人工标注（格式见 `eval/datasets/human_labels.example.jsonl`；
+  实际标注文件 `human_labels.jsonl` 属于"答案纸"，不进版本库），
   计算 judge 与人工的一致率与 Cohen's kappa。
 
 只报 judge 给出的分数、却不验证 judge 本身可不可信，
-是评测里最常见的方法论漏洞——这一点在面试里很容易被追问。
+是评测里最常见的方法论漏洞——报告里必须主动交代。
 
 ### 三种被测系统
 
@@ -409,9 +407,7 @@ eval/reports/selftest__oracle__rule__20260920T034906Z.json
 
 ```
 .
-├── PROJECT_PLAN.md          # 最初的方案（4 周拆解 / 判断标准）
 ├── docs/
-│   ├── INTERVIEW_PACK.md    # ★ 面试材料：简历条目 / 问答稿 / 演示脚本 / 数据速查
 │   ├── RETRIEVAL_NOTES.md   # 检索踩坑记录（中文分词四个坑 / BM25 的边界 / 缓存被清）
 │   └── EVAL_NOTES.md        # ★ 评测踩坑记录（14 章：指标 bug / 多跳校验 / 显著性 / kappa）
 ├── docker-compose.yml       # pgvector(pg16) + adminer
@@ -464,7 +460,7 @@ eval/reports/selftest__oracle__rule__20260920T034906Z.json
         └── components/TraceTimeline.vue # ★ 执行时间线（甘特图）
 ```
 
-★ = 面试重点讲解的模块。
+★ = 核心模块，建议优先阅读。
 
 ---
 
@@ -505,7 +501,7 @@ eval/reports/selftest__oracle__rule__20260920T034906Z.json
 `backend/var/traces/YYYY-MM-DD.jsonl`，每行一个完整请求记录。
 也可以直接调 `GET /api/traces/recent?limit=20` 看内存里的最近记录。
 
-**Q：评测报告里的数字能直接写简历吗？**
+**Q：评测报告里的数字可以直接对外用吗？**
 只有当 `判分器 = llm` 且报告里有 kappa 时才可以用。
 用 `rule` 判分器跑出来的数字只能用于验证评测框架，报告顶部会自动打警告。
 
